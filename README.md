@@ -1,1 +1,1 @@
-# Build with React with vite and vanila css ❤
+# Build with React with vite and vanilla css ❤
