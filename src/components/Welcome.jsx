@@ -1,8 +1,12 @@
 import './style/Welcome.css'
-import github from '../assets/name.png'
+import github from '../assets/logo-white.png'
 import share from '../assets/share.png'
+import MenuIcon from '@mui/icons-material/Menu'
+import CloseIcon from '@mui/icons-material/Close';
+import { useState } from 'react';
 
 function Welcome() {
+    const [slide, setSlide] = useState(true)
     return (
         <>
             <div className='wrapper'>
@@ -11,13 +15,16 @@ function Welcome() {
                         <h2>-RMS?-</h2>
                         <div>
                             <span>
-                                <a href='github.com/radityaseptian/react-search-movie-sederhana'>
+                                <a href='github.com/radityaseptian/react-search-movie-sederhana' target='_blank'>
                                     <img src={github} alt='Github' className='github' />
                                     <img src={share} alt='Menuju Link' className='share' />
                                 </a>
                             </span>
-                            <span>Hamburger</span>
+                            {slide ? <MenuIcon onClick={() => setSlide(false)} /> : <CloseIcon onClick={() => setSlide(true)} />}
                         </div>
+                    </div>
+                    <div id='menu'>
+                        
                     </div>
                     <div className='content'>
                         <h1>TODOLIST PENCARIAN MOVIE DENGAN REACT JS</h1>

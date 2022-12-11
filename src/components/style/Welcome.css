@@ -6,6 +6,9 @@
     font-family: 'playfair';
     src: url(../../assets/font/PlayfairDisplaySC-Regular.ttf);
 }
+*,html,body {
+    box-sizing: border-box;
+}
 .wrapper {
     width: 100%;
     height: 100vh;
@@ -31,24 +34,36 @@ div.nav {
     padding-top: 15px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: rgb(255, 255, 255);
 }
+div.nav > h2 {
+    padding-top: 5px;
+}
 div.nav > div {
-    width: 19em;
+    width: 7em;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+}
+div.nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .github {
     width: 45px;
 }
 .share {
-    width: 15px;
+    width: 13px;
+}
+#menu {
+    position: absolute;
 }
 .content {
     width: 100%;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 9%;
 }
 .content > h1 {
     font-family: 'titillium';  
