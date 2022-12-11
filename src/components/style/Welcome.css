@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'titillium';
+    src: url(../../assets/font/TitilliumWeb-Regular.ttf);
+}
+@font-face {
+    font-family: 'playfair';
+    src: url(../../assets/font/PlayfairDisplaySC-Regular.ttf);
+}
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../../assets/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bg-img {
+    width: 90%;
+    height: 90%;
+    background-image: url(../../assets/banner.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 7px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.427);
+}
+div.nav {
+    width: 90%;
+    margin: auto;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(255, 255, 255);
+}
+div.nav > div {
+    width: 19em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.github {
+    width: 45px;
+}
+.share {
+    width: 15px;
+}
+.content {
+    width: 100%;
+    text-align: center;
+    margin-top: 10%;
+}
+.content > h1 {
+    font-family: 'titillium';  
+    color: rgb(231, 227, 227);
+}
+.content > p {
+    margin: .05em 0 1.8em;
+    color: rgb(255, 255, 255);
+    font-family: 'playfair';
+    font-variant: small-caps;
+}
+.content > input {
+    height: 1.5em;
+    width: 260px;
+    border-radius: 5px;
+    border: none;
+    padding: 15px 10px;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: 1em;
+    border: 1px solid #0d6efd;
+    transition: all 0.2s;
+    margin-right: 7px;
+}
+.content > input:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.25rem #0066ff79;
+}
+.content > button {
+    padding: 0.59em;
+    border-radius: 5px;
+    background-color: #0063f8;
+    border: none;
+    color: white;
+}
+.content > button:hover {
+    box-shadow: inset -.5px -.5px 2px #1900ffd5;
+    background: #0b61e0;
+}
