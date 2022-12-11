@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Pagination, Grid } from '@mui/material'
+import { Pagination } from '@mui/material'
 import './App.css'
 
 function App() {
@@ -9,10 +9,14 @@ function App() {
     // =====
     const [movie, setMovie] = useState([])
     const [totalResults, setTotalResults] = useState(0)
-    async function fetchMovies(query) {
+    const [movieName, setMovieName] = useState('')
+    const [welcomePage, setWwelcomePage] = useState(true)
+
+    async function fetchMovies(query, page = 1) {
         const param = new URLSearchParams()
         param.append('s', query)
-        return await fetch(`${url}&${param}`)
+        param.append('page', page)
+        await fetch(`${url}&${param}`)
             .then((res) => res.json())
             .then((body) => {
                 body.Response == 'True' ? setMovie(body.Search) : setMovie(body)
@@ -23,16 +27,18 @@ function App() {
     }
     const enter = (key) => {
         if (key.code == 'Enter') {
-            if (search.value.length >= 3) {
-                pagination.current.className = 'MuiPagination-root MuiPagination-text css-1oj2twp-MuiPagination-root'
-                fetchMovies(search.value)
+            if (movieName.length >= 3) {
+                fetchMovies(movieName)
+                pagination.current.className =
+                    'MuiPagination-root MuiPagination-text css-1oj2twp-MuiPagination-root'
             }
         }
     }
-    const getMovies = () => {
-        if (search.value.length >= 3) {
-            pagination.current.className = 'MuiPagination-root MuiPagination-text css-1oj2twp-MuiPagination-root'
-            fetchMovies(search.value)
+    const getMovies = (e) => {
+        if (movieName.length >= 3) {
+            fetchMovies(movieName)
+            pagination.current.className =
+                'MuiPagination-root MuiPagination-text css-1oj2twp-MuiPagination-root'
         }
     }
     window.onscroll = () => {
@@ -46,10 +52,17 @@ function App() {
             document.querySelector('nav').style.boxShadow = 'none'
         }
     }
-    const pagination = useRef()
     useEffect(() => {
-        pagination.current.className = 'MuiPagination-root MuiPagination-text css-1oj2twp-MuiPagination-root hide'
+        pagination.current.className =
+            'MuiPagination-root MuiPagination-text css-1oj2twp-MuiPagination-root hide'
     }, [])
+    const handleChange = (e) => {
+        setMovieName(e.target.value)
+    }
+    const pagination = useRef()
+    const dataChange = (e, num) => {
+        fetchMovies(movieName, num)
+    }
     return (
         <>
             <nav>
@@ -63,6 +76,7 @@ function App() {
                                 name="search"
                                 id="search"
                                 onKeyUp={enter}
+                                onChange={handleChange}
                             />
                         </li>
                         <li>
@@ -73,9 +87,7 @@ function App() {
             </nav>
             <div className="nav-height"></div>
             <div id="container">
-                <h1>Hasil pencarian : </h1>
-                <figcaption>Note: jumlah karakter harus melebihi 2!</figcaption>
-                <hr />
+                {totalResults != 0 && <p id='result'>Total item ditemukan: {totalResults}</p>}
                 <div id="content">
                     {movie.Error ? (
                         <h1>{movie.Error}</h1>
@@ -107,11 +119,8 @@ function App() {
                 </div>
                 <Pagination
                     ref={pagination}
-                    count={
-                        movie.Search || totalResults >= 100
-                            ? 10
-                            : Math.ceil(totalResults / 10)
-                    }
+                    onChange={dataChange}
+                    count={Math.ceil(totalResults / 10)}
                     shape="rounded"
                 />
             </div>
