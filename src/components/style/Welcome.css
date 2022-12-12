@@ -50,6 +50,7 @@ div.nav a {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: .1em;
 }
 .github {
     width: 45px;

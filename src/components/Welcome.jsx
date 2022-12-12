@@ -6,7 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 
 function Welcome() {
-    const [slide, setSlide] = useState(true)
+    const [slide, setSlide] = useState(false)
     return (
         <>
             <div className='wrapper'>
@@ -20,7 +20,7 @@ function Welcome() {
                                     <img src={share} alt='Menuju Link' className='share' />
                                 </a>
                             </span>
-                            {slide ? <MenuIcon onClick={() => setSlide(false)} /> : <CloseIcon onClick={() => setSlide(true)} />}
+                            {!slide ? <MenuIcon onClick={() => setSlide(true)} /> : <CloseIcon onClick={() => setSlide(false)} />}
                         </div>
                     </div>
                     <div id='menu'>
