@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'titillium';
+    src: url(../../assets/font/TitilliumWeb-Regular.ttf);
+}
+@font-face {
+    font-family: 'playfair';
+    src: url(../../assets/font/PlayfairDisplaySC-Regular.ttf);
+}
 * {
     padding: 0;
     margin: 0;
@@ -18,7 +26,8 @@ nav {
     inset: 0;
     height: 55px;
     font-family: Arial, Helvetica, sans-serif;
-    background: gray;
+    background: #7d47e9;
+    background-image: linear-gradient(to right, #7d47e9 5%, #a47fee);
 }
 nav > div {
     display: flex;
@@ -28,6 +37,10 @@ nav > div {
     margin: auto;
     width: 90%;
     height: 55px;
+    font-family: 'titillium';
+}
+nav > div > h1 {
+    color: white;
 }
 nav div ul {
     display: flex;
@@ -47,17 +60,18 @@ nav div ul input {
 }
 nav div li input:focus {
     outline: none;
-    box-shadow: 0 0 0 0.25rem rgba(64, 64, 65, 0.25);
+    box-shadow: 0 0 0 0.25rem #0066ff79;
 }
 nav div li button {
     padding: 0.59em;
     border-radius: 5px;
-    background-color: rgb(190, 190, 190);
+    background-color: #0004ff;
     border: none;
+    color: white;
 }
 nav div li button:hover {
-    box-shadow: inset 0 0 15px rgb(136, 136, 136);
-    background: rgb(218, 214, 214);
+    box-shadow: inset -.5px -.5px 2px #1900ffd5;
+    background: #0b61e0;
 }
 #container {
     padding-top: 1.5em;
@@ -68,6 +82,7 @@ nav div li button:hover {
 }
 #result {
     margin-left: 8px;
+    font-family: 'titillium';
 }
 #content {
     display: flex;
@@ -76,6 +91,7 @@ nav div li button:hover {
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
+    font-family: 'playfair', 'titillium','Arial';
 }
 #card {
     max-width: 250px;
@@ -96,23 +112,10 @@ nav div li button:hover {
     padding: 0 7px;
 }
 #card .year {
-    font-style: italic;
     margin: 7px 0 0;
 }
 #card .type {
     margin: 2px 0 7px;
-}
-#card .details {
-    margin-bottom: 15px;
-    padding: 8px 10px;
-    background: gray;
-    border: none;
-    font-weight: 600;
-    border-radius: 0.32em;
-    color: #fff;
-}
-#card .details:hover {
-    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.452);
 }
 .hide {
     visibility: hidden;
@@ -123,6 +126,20 @@ nav div li button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.css-i4bv87-MuiSvgIcon-root {
+    cursor: pointer;
+}
+footer {
+    height: 50px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    font-family: 'titillium';
+    margin: 20px  10px;
+}
+footer span {
+    color: red;
 }
 
 /* RESPONSIVE */

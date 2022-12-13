@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Pagination } from '@mui/material'
 import './style/Content.css'
 
-function Content() {
+function Content(props) {
     const endpoint = 'https://www.omdbapi.com/?'
     const apikey = 'apikey=ea93b7ec'
     const url = `${endpoint}${apikey}`
@@ -10,6 +10,7 @@ function Content() {
     const [movie, setMovie] = useState([])
     const [totalResults, setTotalResults] = useState(0)
     const [movieName, setMovieName] = useState('')
+    const search = useRef()
 
     async function fetchMovies(query, page = 1) {
         const param = new URLSearchParams()
@@ -28,6 +29,8 @@ function Content() {
         if (key.code == 'Enter') {
             if (movieName.length >= 3) {
                 fetchMovies(movieName)
+                document.title = `Search - ${movieName}`
+                setTotalResults(0)
                 pagination.current.className =
                     'MuiPagination-root MuiPagination-text css-1oj2twp-MuiPagination-root'
             }
@@ -36,6 +39,8 @@ function Content() {
     const getMovies = (e) => {
         if (movieName.length >= 3) {
             fetchMovies(movieName)
+            document.title = `Search - ${movieName}`
+            setTotalResults(0)
             pagination.current.className =
                 'MuiPagination-root MuiPagination-text css-1oj2twp-MuiPagination-root'
         }
@@ -54,6 +59,8 @@ function Content() {
     useEffect(() => {
         pagination.current.className =
             'MuiPagination-root MuiPagination-text css-1oj2twp-MuiPagination-root hide'
+        fetchMovies(props.movie)
+        document.title = `Search - ${props.movie}`
     }, [])
     const handleChange = (e) => {
         setMovieName(e.target.value)
@@ -70,10 +77,11 @@ function Content() {
                     <ul>
                         <li>
                             <input
-                                type="search"
-                                placeholder="Masukan judul movie.."
-                                name="search"
-                                id="search"
+                                type='search'
+                                placeholder='Masukan judul movie..'
+                                name='search'
+                                id='search'
+                                ref={search}
                                 onKeyUp={enter}
                                 onChange={handleChange}
                             />
@@ -84,32 +92,31 @@ function Content() {
                     </ul>
                 </div>
             </nav>
-            <div className="nav-height"></div>
-            <div id="container">
-                {totalResults != 0 && <p id='result'>Total item ditemukan: {totalResults}</p>}
-                <div id="content">
+            <div className='nav-height'></div>
+            <div id='container'>
+                {totalResults != 0 && (
+                    <p id='result'>Total item ditemukan: {totalResults}</p>
+                )}
+                <div id='content'>
                     {movie.Error ? (
                         <h1>{movie.Error}</h1>
                     ) : (
                         movie.map((value) => {
                             return (
-                                <div id="card" key={value.imdbID}>
+                                <div id='card' key={value.imdbID}>
                                     <img
                                         src={value.Poster}
                                         alt={value.Title}
-                                        className="poster"
+                                        className='poster'
                                     />
                                     <div>
-                                        <h3 className="title">{value.Title}</h3>
-                                        <p className="year">
+                                        <h3 className='title'>{value.Title}</h3>
+                                        <p className='year'>
                                             Tanggal rilis: {value.Year}
                                         </p>
-                                        <p className="type">
+                                        <p className='type'>
                                             Tipe: {value.Type}
                                         </p>
-                                        <button className="details">
-                                            Lengkap
-                                        </button>
                                     </div>
                                 </div>
                             )
@@ -120,9 +127,13 @@ function Content() {
                     ref={pagination}
                     onChange={dataChange}
                     count={Math.ceil(totalResults / 10)}
-                    shape="rounded"
+                    shape='rounded'
                 />
             </div>
+            <footer>
+                <small>RMS</small>
+                <small>Build with love <span>&#10084;</span></small>
+            </footer>
         </>
     )
 }

@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'titillium';
-    src: url(../../assets/font/TitilliumWeb-Regular.ttf);
+    src: url(./assets/font/TitilliumWeb-Regular.ttf);
 }
 @font-face {
     font-family: 'playfair';
-    src: url(../../assets/font/PlayfairDisplaySC-Regular.ttf);
+    src: url(./assets/font/PlayfairDisplaySC-Regular.ttf);
 }
 *,html,body {
     box-sizing: border-box;
@@ -12,17 +12,18 @@
 .wrapper {
     width: 100%;
     height: 100vh;
-    background-image: url(../../assets/bg.jpg);
+    background-image: url(./assets/bg.jpg);
     background-position: center;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .bg-img {
     width: 90%;
     height: 90%;
-    background-image: url(../../assets/banner.jpg);
+    background-image: url(./assets/banner.jpg);
     background-position: center;
     background-size: cover;
     border-radius: 7px;
@@ -51,6 +52,33 @@ div.nav a {
     justify-content: center;
     align-items: center;
     padding: .1em;
+}
+#menu {
+    position: absolute;
+    right: 100px;
+    background-color: antiquewhite;
+    height: 40vh;
+    width: 50vw;
+    border-radius: 20px;
+    padding: 10px;
+    font-family: 'titillium';
+}
+#menu > h2 {
+    text-align: center;
+    padding: 10px 20px 20px;
+}
+#menu > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: calc(100% - 100px);
+    padding-bottom: 10px;
+}
+#menu ul {
+    padding-left: 20px;
+}
+#menu li {
+    list-style-type: disc;
 }
 .github {
     width: 45px;
@@ -103,4 +131,73 @@ div.nav a {
 .content > button:hover {
     box-shadow: inset -.5px -.5px 2px #1900ffd5;
     background: #0b61e0;
+}
+
+@media (max-width: 768px) {
+    .nav > h2 {
+        font-size: 1.4em;
+    }
+    .content {
+        margin-top: 15%;
+        padding: 20px;
+    }
+    .content > h1 {
+        font-size: 1.5em;
+    }
+    .content > input {
+        height: 1.2em;
+        width: 50%;
+    }
+    #menu > h2 {
+        padding: 5px;
+        font-size: 1em;
+    }
+    #menu > p {
+        font-size: .8em;
+    }
+    #menu > div {
+        font-size: .8em;
+        right: 60px;
+        height: calc(100% - 70px);
+    }
+}
+@media (max-width: 640px) {
+    #menu {
+        right: 55px;
+    }
+    .nav > h2 {
+        font-size: 1.3em;
+    }
+    .content {
+        margin-top: 18%;
+    }
+    .content > h1 {
+        font-size: 1.2em;
+    }
+    .content > p {
+        font-size: .8em;
+    }
+    .content > input {
+        width: 45%;
+    }
+    .github {
+        width: 40px;
+    }
+    .share {
+        width: 11px;
+    }
+}
+@media (max-width: 450px) {
+    #menu > div {
+        font-size: .7em;
+    }
+}
+@media (max-width: 340px) {
+    .content {
+        margin-top: 30%;
+    }
+    .content > input {
+        padding: 15px 10px;
+        width: 70%;
+    }
 }
