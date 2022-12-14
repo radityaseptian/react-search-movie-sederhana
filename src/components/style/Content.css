@@ -75,6 +75,7 @@ nav div li button:hover {
 }
 #container {
     padding-top: 1.5em;
+    min-height: calc(100vh - 145px);
 }
 #container > h1 {
     padding-bottom: 0.15em;
@@ -92,6 +93,7 @@ nav div li button:hover {
     width: 100%;
     justify-content: center;
     font-family: 'playfair', 'titillium','Arial';
+    min-height: calc(100vh - 200px);
 }
 #card {
     max-width: 250px;

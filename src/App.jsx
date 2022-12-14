@@ -4,7 +4,7 @@ import github from './assets/logo-white.png'
 import share from './assets/share.png'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
-import { useState, useRef } from 'react'
+import { useState, useRef, lazy } from 'react'
 
 function App() {
     const [welcome, setWelcome] = useState(true)
